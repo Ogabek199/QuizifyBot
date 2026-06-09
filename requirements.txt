@@ -1,0 +1,5 @@
+aiogram>=3.4.0
+python-dotenv
+python-docx
+pdfplumber
+aiofiles
