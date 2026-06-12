@@ -3,3 +3,5 @@ python-dotenv
 python-docx
 pdfplumber
 aiofiles
+fastapi
+uvicorn[standard]
