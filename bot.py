@@ -1737,7 +1737,7 @@ async def cmd_admin(message: Message):
 
 # ──────────────────────────────── Main ───────────────────────────────────────
 
-async def main():
+async def setup_bot():
     init_db()
     bot = Bot(token=BOT_TOKEN)
     storage = MemoryStorage()
@@ -1758,11 +1758,17 @@ async def main():
         BotCommand(command='setlang', description='Tilni o''zgartirish'),
     ])
 
+    return bot, dp, storage
+
+
+async def main():
+    bot, dp, storage = await setup_bot()
     logger.info("✅ Bot ishga tushdi")
     try:
         await dp.start_polling(bot, allowed_updates=['message', 'callback_query'])
     finally:
         await bot.session.close()
+
 
 if __name__ == '__main__':
     asyncio.run(main())
